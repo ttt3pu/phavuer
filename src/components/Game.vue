@@ -40,7 +40,7 @@ export default defineComponent({
       if (tmpParent.firstChild) {
         canvasRoot.value.appendChild(tmpParent.firstChild)
         // game.scale.getParent({ ...props.config, parent: canvasRoot.value })
-        game.scale.getViewport();
+        game.scale.updateBounds();
       }
     })
     return { canvasRoot, show }
