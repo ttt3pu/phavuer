@@ -39,8 +39,9 @@ export default defineComponent({
       // May be null if parent is overwritten in props.config
       if (tmpParent.firstChild) {
         canvasRoot.value.appendChild(tmpParent.firstChild)
-        // game.scale.getParent({ ...props.config, parent: canvasRoot.value })
-        game.scale.updateBounds();
+        setTimeout(() => {
+          game.scale.getParent({ ...props.config, parent: canvasRoot.value })
+        }, 1);
       }
     })
     return { canvasRoot, show }
