@@ -1,6 +1,6 @@
 <template>
   <div data-phavuer-game>
-    <div data-phavuer-canvas ref="canvasRoot" />
+    <div data-phavuer-canvas ref="canvasRoot" id="phavuer-canvas"" />
     <slot v-if="show" />
   </div>
 </template>
@@ -39,7 +39,7 @@ export default defineComponent({
       // May be null if parent is overwritten in props.config
       if (tmpParent.firstChild) {
         canvasRoot.value.appendChild(tmpParent.firstChild)
-        game.scale.getParent({ ...props.config, parent: canvasRoot.value })
+        game.scale.getParent({ ...props.config, parent: 'phavuer-canvas' })
       }
     })
     return { canvasRoot, show }
