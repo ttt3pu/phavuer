@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { defineComponent, provide, ref, onMounted } from 'vue'
+import { defineComponent, provide, ref, onMounted, watch } from 'vue'
 import { InjectionKeys } from '../index'
 import packageJson from '../../package.json'
 export default defineComponent({
