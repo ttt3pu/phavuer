@@ -30,16 +30,24 @@ export default defineComponent({
     provide(InjectionKeys.Game, game)
     provide(InjectionKeys.Scene, undefined)
     provide(InjectionKeys.Container, undefined)
+    const ready = ref(false);
+    const mounted = ref(false);
     game.events.addListener('ready', () => {
       show.value = true
       context.emit('ready', game)
+      ready.value = true
     })
     context.emit('create', game)
     onMounted(() => {
       // May be null if parent is overwritten in props.config
       if (tmpParent.firstChild) {
         canvasRoot.value.appendChild(tmpParent.firstChild)
-        game.scale.updateBounds();
+      }
+      mounted.value = true
+    })
+
+    watch([ready, mounted], () => {
+      if (ready.value && mounted.value) {
         game.scale.getParent({ ...props.config, parent: canvasRoot.value })
       }
     })
